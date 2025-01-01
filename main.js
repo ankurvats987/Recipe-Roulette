@@ -124,9 +124,7 @@ async function displayData() {
     } else {
         foodData = await getData("https://www.themealdb.com/api/json/v1/1/random.php");
     }
-
-    saveRecipeBtn.disabled = false;
-
+    
     const recipeImageBlob = await downloadImage(foodData.strMealThumb);
 
     recipeThumb.classList.toggle("skeleton");

@@ -60,11 +60,6 @@ button {
     transition: background 0.2s ease;
 }
 
-button:disabled {
-    background-color: gray;
-    color: white;
-    cursor: not-allowed;
-}
 
 button:hover {
     background: #4d5d4f; /* Soft green for hover */
