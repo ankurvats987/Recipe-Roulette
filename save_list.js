@@ -72,8 +72,9 @@ async function downloadImage(imageUrl) {
 async function displaySavedRecipes() {
     let savedRecipesObj = JSON.parse(localStorage.getItem("saved-recipes"));
 
+    deleteDummyBoxes();
+
     if (Array.isArray(savedRecipesObj)) {
-        deleteDummyBoxes();
         savedRecipes = savedRecipesObj;
         for (let recipe of savedRecipes) {
             const imageBlob = await downloadImage(recipe.strMealThumb);
