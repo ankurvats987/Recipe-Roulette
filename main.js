@@ -43,13 +43,15 @@ saveRecipeBtn.addEventListener('click', () => {
             let savedRecipes = JSON.parse(
                 localStorage.getItem("saved-recipes"));
 
-            for (let recipe of savedRecipes) {
-                if (recipe.idMeal === foodData.idMeal) {
-                    alreadyThereDialog.showModal();
-                    alreadyThereDialog.style.visibility = "visible";
-                    console.log("Already saved");
-
-                    return;
+            if (savedRecipes && Array.isArray(savedRecipes)) {
+                for (let recipe of savedRecipes) {
+                    if (recipe.idMeal === foodData.idMeal) {
+                        alreadyThereDialog.showModal();
+                        alreadyThereDialog.style.visibility = "visible";
+                        console.log("Already saved");
+    
+                        return;
+                    }
                 }
             }
 
@@ -124,7 +126,7 @@ async function displayData() {
     } else {
         foodData = await getData("https://www.themealdb.com/api/json/v1/1/random.php");
     }
-    
+
     const recipeImageBlob = await downloadImage(foodData.strMealThumb);
 
     recipeThumb.classList.toggle("skeleton");
